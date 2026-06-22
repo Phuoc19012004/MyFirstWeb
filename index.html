@@ -1,478 +1,100 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang='vi'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- 🎯 TIÊU ĐỀ MỚI ĐÃ ĐƯỢC THAY ĐỔI -->
-    <title>Phạm Hoàng Phước - Ông trùm xộn lào ĐBSCL</title>
-
-    <!-- 🔍 CÁC THẺ META THÊM VÀO ĐỂ TÌM KIẾM TRÊN GOOGLE -->
-    <meta name="description" content="Trang thông tin cập nhật giá cả, bản tin thị trường nông sản Miền Tây và ĐBSCL bởi Phạm Hoàng Phước.">
-    <meta name="keywords" content="Phạm Hoàng Phước, pham hoang phuoc, nong san mien tay, ong trum nong san dbscl, gia ca nong san">
-
-    <style>
-        /* --- STYLE TOÀN CỤC --- */
-        :root {
-            --primary-color: #2e7d32;
-            --secondary-color: #81c784;
-            --accent-color: #f57c00;
-            --text-color: #333;
-            --bg-light: #f9f9f9;
-        }
-
-        * {
-            box-sizing: border-box;
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Đồ Án Sinh Viên Phạm Hoàng Phước</title>
+<style>
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e8f5e9;
         }
 
-        body {
-            color: var(--text-color);
-            background-color: var(--bg-light);
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .header-container {
+        .campus-background {
+            /* Hình ảnh trường đại học, cây xanh, đường xá */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo h1 {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .logo span {
-            color: var(--accent-color);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-
-        nav ul li a:hover {
-            color: var(--secondary-color);
-            transition: 0.3s;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-
-        /* --- MAIN CONTENT CONTAINER --- */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            .header-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            nav ul {
-                margin-top: 0.5rem;
-            }
-        }
-
-        /* --- BẢNG GIÁ NÔNG SẢN --- */
-        .section-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            border-left: 5px solid var(--accent-color);
-            padding-left: 0.5rem;
-        }
-
-        .price-table-container {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-
-        .update-time {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        table th, table td {
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid #ddd;
-        }
-
-        table th {
-            background-color: #f1f8e9;
-            color: var(--primary-color);
-        }
-
-        .status-up { color: #d32f2f; font-weight: bold; }
-        .status-down { color: #388e3c; font-weight: bold; }
-        .status-stable { color: #757575; }
-
-        /* --- KHU VỰC TIN TỨC / VẤN ĐỀ --- */
-        .articles-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .article-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            display: flex;
-        }
-
-        @media (max-width: 600px) {
-            .article-card {
-                flex-direction: column;
-            }
-            .article-img {
-                width: 100% !important;
-                height: 150px;
-            }
-        }
-
-        .article-img {
-            width: 200px;
-            object-fit: cover;
-            background-color: #ddd;
-        }
-
-        .article-content {
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
+            align-items: center;
+            position: relative;
         }
 
-        .article-content h3 {
-            margin-bottom: 0.5rem;
-            color: #111;
-        }
-
-        .article-content h3:hover {
-            color: var(--primary-color);
-        }
-
-        .article-content p {
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        /* --- SIDEBAR (TIỂU ĐIỂM & Ý KIẾN) --- */
-        sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .sidebar-box {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .sidebar-box ul {
-            list-style-type: none;
-        }
-
-        .sidebar-box li {
-            padding: 0.5rem 0;
-            border-bottom: 1px dashed #eee;
-            font-size: 0.95rem;
-        }
-
-        .sidebar-box li:last-child {
-            border-bottom: none;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #212121;
-            color: #aaa;
-            padding: 2rem 1rem;
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.85); /* Hiệu ứng kính mờ */
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             text-align: center;
-            margin-top: 3rem;
-            font-size: 0.9rem;
+            max-width: 800px;
+            width: 90%;
         }
 
-        footer p {
-            margin-bottom: 0.5rem;
+        h1 {
+            color: #1b5e20; /* Màu xanh lá đậm */
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: #2e7d32;
+            font-size: 1.5em;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+
+        .description {
+            color: #424242;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            color: #ffffff;
+            font-size: 0.9em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        /* Thêm hiệu ứng đèn đường sáng lên vào buổi tối nếu muốn */
+        .street-lights {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 20% 60%, rgba(255, 220, 100, 0.15) 0%, transparent 20%),
+                        radial-gradient(circle at 80% 60%, rgba(255, 220, 100, 0.15) 0%, transparent 20%);
         }
     </style>
 </head>
 <body>
-
-    <!-- Header điều hướng -->
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <h1>Nông Sản <span>Miền Tây</span></h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#gia-ca-thi-truong">Bảng Giá</a></li>
-                    <li><a href="#tieu-diem">Tiêu Điểm Ngành</a></li>
-                    <li><a href="#canh-bao">Cảnh Báo Hạn Mặn</a></li>
-                </ul>
-            </nav>
+    <div class="campus-background">
+        <div class="street-lights"></div>
+        
+        <div class="content-box">
+            <h1>Đồ Án Sinh Viên</h1>
+            <div class="subtitle">Phạm Hoàng Phước</div>
+            <p class="description">
+                Chào mừng đến với hệ thống Đồ Án.
+            </p>
         </div>
-    </header>
 
-    <!-- Khu vực Banner lớn với nền ảnh hoàng hôn mới -->
-    <section class="hero">
-        <h2>Hệ Thống Dữ Liệu Nông Nghiệp ĐBSCL</h2>
-        <p>Trung tâm tra cứu thông tin giá cả, mã vùng trồng, lịch thời vụ và liên kết tiêu thụ nông - thủy sản 13 tỉnh thành miền Tây Nam Bộ.</p>
-    </section>
-
-    <!-- Thân trang web chính -->
-    <div class="container">
-        
-        <!-- CỘT CHÍNH (BÊN TRÁI) -->
-        <main>
-            
-            <!-- KHỐI GIÁ CẢ PHÂN CHIA THEO MỤC (TABS) -->
-            <div id="gia-ca-thi-truong" class="price-section">
-                <h2 class="section-title">Tra cứu giá theo ngành hàng</h2>
-                <p class="update-time">Cập nhật hôm nay: <span class="current-date-span"></span> | Nguồn: Sở NN&PTNT & Chợ đầu mối</p>
-                
-                <!-- Thanh chuyển Tab -->
-                <div class="tabs-header">
-                    <button class="tab-btn active" onclick="openTab(event, 'trai-cay')">🍎 Trái Cây Ăn Quả</button>
-                    <button class="tab-btn" onclick="openTab(event, 'lua-gao')">🌾 Lúa Gạo</button>
-                    <button class="tab-btn" onclick="openTab(event, 'rau-cu')">🥦 Rau Củ Quả</button>
-                    <button class="tab-btn" onclick="openTab(event, 'thuy-san')">🐟 Thủy Hải Sản</button>
-                </div>
-
-                <!-- Nội dung Tab 1: Trái cây -->
-                <div id="trai-cay" class="tab-content active">
-                    <table>
-                        <thead>
-                            <tr><th>Mặt hàng</th><th>Khu vực khảo sát</th><th>Giá mua (VND/kg)</th><th>Biến động</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>Sầu riêng Ri6</strong></td><td>Tiền Giang, Vĩnh Long</td><td>68.000 - 75.000</td><td class="status-up">▲ 2.000</td></tr>
-                            <tr><td><strong>Xoài Cát Hòa Lộc</strong></td><td>Đồng Tháp</td><td>48.000 - 55.000</td><td class="status-stable">● 0</td></tr>
-                            <tr><td><strong>Mít Thái loại 1</strong></td><td>Hậu Giang, Tiền Giang</td><td>19.000 - 22.000</td><td class="status-down">▼ 1.500</td></tr>
-                            <tr><td><strong>Bưởi Năm Roi</strong></td><td>Vĩnh Long, Sóc Trăng</td><td>25.000 - 28.000</td><td class="status-up">▲ 500</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Nội dung Tab 2: Lúa Gạo -->
-                <div id="lua-gao" class="tab-content">
-                    <table>
-                        <thead>
-                            <tr><th>Chủng loại lúa</th><th>Quy cách (Ướt tại ruộng)</th><th>Giá mua (VND/kg)</th><th>Biến động</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>Lúa Đài Thơm 8</strong></td><td>Thu hoạch máy</td><td>7.900 - 8.100</td><td class="status-up">▲ 100</td></tr>
-                            <tr><td><strong>Lúa OM 18</strong></td><td>Thu hoạch máy</td><td>7.800 - 8.000</td><td class="status-stable">● 0</td></tr>
-                            <tr><td><strong>Lúa IR 50404</strong></td><td>Thu hoạch máy</td><td>7.200 - 7.400</td><td class="status-up">▲ 200</td></tr>
-                            <tr><td><strong>Gạo nguyên liệu loại 1</strong></td><td>Tại kho Sa Đéc/Thốt Nốt</td><td>11.200 - 11.500</td><td class="status-down">▼ 100</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Nội dung Tab 3: Rau Củ -->
-                <div id="rau-cu" class="tab-content">
-                    <table>
-                        <thead>
-                            <tr><th>Tên rau củ</th><th>Nơi sản xuất chính</th><th>Giá sỉ (VND/kg)</th><th>Biến động</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>Hành tím</strong></td><td>Vĩnh Châu (Sóc Trăng)</td><td>35.000 - 40.000</td><td class="status-up">▲ 3.000</td></tr>
-                            <tr><td><strong>Khoai lang tím thâm</strong></td><td>Bình Tân (Vĩnh Long)</td><td>12.000 - 14.500</td><td class="status-down">▼ 500</td></tr>
-                            <tr><td><strong>Cà chua rita</strong></td><td>An Giang</td><td>15.000 - 17.000</td><td class="status-stable">● 0</td></tr>
-                            <tr><td><strong>Dưa leo xô</strong></td><td>Cần Thơ</td><td>9.000 - 11.000</td><td class="status-up">▲ 1.000</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Nội dung Tab 4: Thủy Sản -->
-                <div id="thuy-san" class="tab-content">
-                    <table>
-                        <thead>
-                            <tr><th>Sản phẩm nuôi trồng</th><th>Kích cỡ (Size)</th><th>Giá xuất kho (VND/kg)</th><th>Biến động</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>Cá Tra nguyên liệu</strong></td><td>0.8 - 1.1 kg/con</td><td>27.500 - 28.200</td><td class="status-stable">● 0</td></tr>
-                            <tr><td><strong>Tôm Thẻ Chân Trắng</strong></td><td>100 con/kg</td><td>92.000 - 95.000</td><td class="status-up">▲ 1.500</td></tr>
-                            <tr><td><strong>Tôm Sú</strong></td><td>30 con/kg</td><td>180.000 - 195.000</td><td class="status-up">▲ 5.000</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-
-            <!-- KHỐI CÁC BÀI VIẾT TIÊU ĐIỂM -->
-            <div id="tieu-diem" class="articles-container">
-                <h2 class="section-title">Tiêu điểm & Phân tích thị trường</h2>
-
-                <div class="article-card">
-                    <img class="article-img" src="https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?auto=format&fit=crop&w=300&q=80" alt="Lúa gạo xuất khẩu">
-                    <div class="article-content">
-                        <span class="article-tag">LÚA GẠO</span>
-                        <a href="#"><h3>Đột phá xuất khẩu gạo: ĐBSCL hướng tới phân khúc chất lượng cao</h3></a>
-                        <p>Thay vì chạy theo sản lượng, các địa phương trọng điểm như Kiên Giang, An Giang đang chuyển dịch mạnh sang trồng lúa thơm, lúa hữu cơ để tận dụng lợi thế giá tốt từ các hiệp định thương mại tự do.</p>
-                    </div>
-                </div>
-
-                <div class="article-card">
-                    <img class="article-img" src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=300&q=80" alt="Trái cây vùng mặn">
-                    <div class="article-content">
-                        <span class="article-tag">TRÁI CÂY</span>
-                        <a href="#"><h3>Bài toán cấp mã vùng trồng sầu riêng: Không thể làm kiểu "ăn đong"</h3></a>
-                        <p>Việc Trung Quốc siết chặt kiểm dịch thực vật đòi hỏi nhà vườn Miền Tây phải chuẩn hóa quy trình ghi chép nhật ký sản xuất, chấm dứt tình trạng mượn mã số vùng trồng trái phép.</p>
-                    </div>
-                </div>
-
-                <div class="article-card">
-                    <img class="article-img" src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=300&q=80" alt="Rau củ sấy">
-                    <div class="article-content">
-                        <span class="article-tag">RAU CỦ</span>
-                        <a href="#"><h3>Nông sản Vĩnh Long tìm đường vào chuỗi siêu thị nội địa</h3></a>
-                        <p>Khoai lang và rau màu an toàn sinh học đang gặp khó khi tiếp cận các kệ hàng siêu thị lớn do vướng mắc thủ tục hóa đơn tài chính và tỷ lệ chiết khấu ký gửi còn cao.</p>
-                    </div>
-                </div>
-            </div>
-
-        </main>
-
-        <!-- CỘT PHỤ / SIDEBAR (BÊN PHẢI) -->
-        <sidebar>
-            
-            <!-- Box Cảnh báo Thiên tai / Hạn mặn -->
-            <div id="canh-bao" class="sidebar-box alert-box">
-                <h3 class="section-title" style="color: var(--accent-color);">⚠️ Bản tin hạn mặn</h3>
-                <div class="alert-item">
-                    <strong>Bến Tre:</strong> Độ mặn 4g/l xâm nhập sâu cách cửa sông 45-50km. Khuyến cáo không tưới sầu riêng.
-                </div>
-                <div class="alert-item">
-                    <strong>Tiền Giang:</strong> Đã vận hành cống đóng ngăn mặn Nguyễn Tấn Thành bảo vệ vùng cây ăn trái.
-                </div>
-                <p style="font-size: 0.8rem; color:#666; font-style:italic;">*Số liệu quan trắc trạm thủy văn ĐBSCL.</p>
-            </div>
-
-            <!-- Box Liên kết vùng -->
-            <div class="sidebar-box">
-                <h3 class="section-title">Hợp tác - Tiêu thụ</h3>
-                <ul>
-                    <li>🟢 <a href="#">Tìm đầu ra cho 50 tấn hành tím Vĩnh Châu</a></li>
-                    <li>🟢 <a href="#">HTX Thới Thạnh cần tìm doanh nghiệp bao tiêu lúa OM18</a></li>
-                    <li>🟢 <a href="#">Đăng ký lớp tập huấn canh tác sầu riêng VietGAP miễn phí</a></li>
-                </ul>
-            </div>
-
-            <!-- Box Sàn giao dịch điện tử -->
-            <div class="sidebar-box">
-                <h3 class="section-title">Cơ cấu thị trường ĐBSCL</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Thị trường xuất khẩu chính:</p>
-                <div style="background: #eee; border-radius: 4px; padding: 0.5rem; font-size: 0.85rem; margin-bottom:0.3rem;"><strong>Trung Quốc:</strong> 42% (Trái cây, Thủy sản)</div>
-                <div style="background: #eee; border-radius: 4px; padding: 0.5rem; font-size: 0.85rem; margin-bottom:0.3rem;"><strong>Philippines:</strong> 28% (Chủ yếu là Lúa gạo)</div>
-                <div style="background: #eee; border-radius: 4px; padding: 0.5rem; font-size: 0.85rem;"><strong>Mỹ & EU:</strong> 15% (Thủy sản chế biến sâu)</div>
-            </div>
-
-        </sidebar>
-
+        <div class="footer">
+            &copy; 2026 Phạm Hoàng Phước
+        </div>
     </div>
-
-    <!-- Footer cuối trang -->
-    <footer>
-        <p>© 2026 Hệ thống kết nối dữ liệu Nông nghiệp Miền Tây Nam Bộ.</p>
-        <p>Bản quyền thông tin thuộc về Diễn đàn Nông nghiệp ĐBSCL tự do. Mọi số liệu chỉ mang tính chất tham khảo đầu tư.</p>
-    </footer>
-
-    <!-- JAVASCRIPT ĐIỀU KHIỂN CHUYỂN TABS -->
-    <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-                tabcontent[i].classList.remove("active");
-            }
-
-            tablinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-
-            document.getElementById(tabName).style.display = "block";
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-
-        const d = new Date();
-        const dateString = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
-        
-        const dateSpans = document.getElementsByClassName("current-date-span");
-        for(let i=0; i<dateSpans.length; i++){
-            dateSpans[i].innerHTML = dateString;
-        }
-    </script>
 </body>
 </html>
